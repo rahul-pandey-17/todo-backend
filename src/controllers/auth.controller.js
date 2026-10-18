@@ -72,3 +72,14 @@ export const loginUser = asyncHandler(async (req, res) => {
     },
   })
 })
+
+export const logoutUser = asyncHandler(async (req, res) => {
+  res.clearCookie('accessToken', {
+    ...COOKIE_OPTIONS,
+    maxAge: env.ACCESS_TOKEN_EXPIRY,
+  })
+
+  return successResponse(res, {
+    message: 'Logged out',
+  })
+})

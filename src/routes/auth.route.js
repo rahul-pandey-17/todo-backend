@@ -9,4 +9,6 @@ router.route('/signup').post(validateInputs(signupSchema), authController.signup
 
 router.route('/login').post(validateInputs(loginSchema), authController.loginUser)
 
+router.route('/logout').post(authController.logoutUser)
+
 export default router
