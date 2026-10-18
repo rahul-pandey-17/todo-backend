@@ -5,6 +5,8 @@ const envSchema = z.object({
   CORS_ORIGIN: z.url(),
   DATABASE_URI: z.url(),
   PORT: z.coerce.number(),
+  ACCESS_TOKEN_SECRET: z.string().nonempty(),
+  ACCESS_TOKEN_EXPIRY: z.coerce.number(),
 })
 
 const parsedSchema = envSchema.safeParse(process.env)

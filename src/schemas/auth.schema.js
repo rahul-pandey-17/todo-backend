@@ -30,3 +30,8 @@ export const signupSchema = z.strictObject({
   email: emailSchema,
   password: passwordSchema,
 })
+
+export const loginSchema = z.strictObject({
+  email: emailSchema,
+  password: passwordSchema,
+})
