@@ -19,9 +19,11 @@ app.use(
 
 // route imports
 import authRoutes from './routes/auth.route.js'
+import todoRoutes from './routes/todo.route.js'
 
 // routes
 app.use('/api/auth', authRoutes)
+app.use('/api/todo', todoRoutes)
 
 // global error handler
 app.use(globalErrorHandler)
