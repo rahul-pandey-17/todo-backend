@@ -18,8 +18,10 @@ app.use(
 )
 
 // route imports
+import authRoutes from './routes/auth.route.js'
 
 // routes
+app.use('/api/auth', authRoutes)
 
 // global error handler
 app.use(globalErrorHandler)
