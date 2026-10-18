@@ -3,6 +3,8 @@ import * as z from 'zod'
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   CORS_ORIGIN: z.url(),
+  DATABASE_URI: z.url(),
+  PORT: z.coerce.number(),
 })
 
 const parsedSchema = envSchema.safeParse(process.env)
