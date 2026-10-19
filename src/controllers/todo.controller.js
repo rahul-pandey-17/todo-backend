@@ -51,3 +51,30 @@ export const getTodo = asyncHandler(async (req, res) => {
     data: todo,
   })
 })
+
+export const updateTodo = asyncHandler(async (req, res) => {
+  const { title, description } = req.validatedBody
+  const todoId = req.params.id
+  const userId = req.user.id
+
+  const updates = {}
+
+  if (title !== undefined) {
+    updates.title = title
+  }
+
+  if (description !== undefined) {
+    updates.description = description
+  }
+
+  const updatedTodo = await Todo.findOneAndUpdate(
+    { _id: todoId, userId },
+    { $set: updates },
+    { returnDocument: 'after' },
+  )
+
+  return successResponse(res, {
+    message: 'Todo updated successfully',
+    data: updatedTodo,
+  })
+})

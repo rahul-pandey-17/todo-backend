@@ -14,3 +14,8 @@ export const createTodoSchema = z.strictObject({
   title: titleSchema,
   description: descriptionSchema,
 })
+
+export const updateTodoSchema = z.strictObject({
+  title: titleSchema.optional(),
+  description: descriptionSchema,
+})
