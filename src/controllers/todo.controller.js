@@ -78,3 +78,15 @@ export const updateTodo = asyncHandler(async (req, res) => {
     data: updatedTodo,
   })
 })
+
+export const deleteTodo = asyncHandler(async (req, res) => {
+  const todoId = req.params.id
+  const userId = req.user.id
+
+  const deletedTodo = await Todo.findOneAndDelete({ _id: todoId, userId })
+
+  return successResponse(res, {
+    message: 'Todo deleted successfully',
+    data: deletedTodo,
+  })
+})

@@ -18,4 +18,6 @@ router
   .route('/:id')
   .patch(authenticateUser, validateInputs(updateTodoSchema), todoController.updateTodo)
 
+router.route('/:id').delete(authenticateUser, todoController.deleteTodo)
+
 export default router
