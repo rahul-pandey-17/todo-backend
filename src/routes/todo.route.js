@@ -12,4 +12,6 @@ router
 
 router.route('/').get(authenticateUser, todoController.getAllTodos)
 
+router.route('/:id').get(authenticateUser, todoController.getTodo)
+
 export default router

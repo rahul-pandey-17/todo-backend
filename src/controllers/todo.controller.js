@@ -32,3 +32,22 @@ export const getAllTodos = asyncHandler(async (req, res) => {
     data: todos,
   })
 })
+
+export const getTodo = asyncHandler(async (req, res) => {
+  const userId = req.user.id
+  const todoId = req.params.id
+
+  const todo = await Todo.findOne({ _id: todoId, userId })
+
+  if (!todo) {
+    throw new ApiError({
+      statusCode: 404,
+      message: 'Todo not found',
+    })
+  }
+
+  return successResponse(res, {
+    message: 'Todo fetched successfully',
+    data: todo,
+  })
+})
