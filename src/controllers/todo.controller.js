@@ -23,3 +23,12 @@ export const createTodo = asyncHandler(async (req, res) => {
     },
   })
 })
+
+export const getAllTodos = asyncHandler(async (req, res) => {
+  const todos = await Todo.find({ userId: req.user.id })
+
+  return successResponse(res, {
+    message: 'Todos fetched successfully',
+    data: todos,
+  })
+})

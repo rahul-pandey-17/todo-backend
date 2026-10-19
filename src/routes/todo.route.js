@@ -10,4 +10,6 @@ router
   .route('/')
   .post(authenticateUser, validateInputs(createTodoSchema), todoController.createTodo)
 
+router.route('/').get(authenticateUser, todoController.getAllTodos)
+
 export default router
